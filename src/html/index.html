@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GAME --> SET</title>
+
+    <style>
+
+    html, body {
+      margin: 0px;
+      width: 100%;
+      height: 100%;
+    }
+    .canvas{
+      width: 100%;
+      height: 100%;
+    }
+    </style>
+    <script src='js/pixi.min.js'></script>
+  </head>
+
+    <body>
+      <div style='width:250px;height:100%; background:#222222;right:0; position:absolute;' onClick="test();"></div>
+    </body>
+
+    <script>
+    function onButtonUp() {
+      alert('123');
+    }
+
+      var renderer = PIXI.autoDetectRenderer(
+        window.innerWidth -250,
+        window.innerHeight -20,
+        {backgroundColor : 0x1099bb}
+      );
+
+      document.body.appendChild(renderer.view);
+
+      var stage = new PIXI.Container();
+
+
+      var texture = PIXI.Texture.fromImage('img/test.png');
+
+      var card = new PIXI.Sprite(texture);
+      card.interactive = true;
+      //card.setInteractive(true);
+
+      card.anchor.x = 0.1;
+      card.anchor.y = 0.5;
+
+      card.position.x = 200;
+      card.position.y = 150;
+
+      card.click = data => test(data);
+      console.log(card);
+      stage.addChild(card);
+
+
+      animate();
+      function animate() {
+        requestAnimationFrame(animate);
+
+        renderer.render(stage);
+      }
+
+      function test(data) {
+
+
+        data.target.position.x += 5;
+        data.target.position.y += 5;
+
+      }
+
+
+    </script>
+
+</html>
