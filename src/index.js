@@ -35,7 +35,7 @@ function selectOne() {
 }
 
 function select() {
-  console.log([ selectOne(), selectOne(), selectOne() ]);
+  console.log([selectOne(), selectOne(), selectOne()]);
 }
 
 
@@ -49,7 +49,7 @@ figure.forEach(
 
 select();
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 
 app.listen(port);
 /* eslint no-console: 0 */
