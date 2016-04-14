@@ -17,122 +17,13 @@
     }
     </style>
     <script src='js/pixi.min.js'></script>
+    <script src='js/init.js'></script>
+    <script src='js/card.js'></script>
+
   </head>
 
-    <body>
+    <body onload='init();'>
       <div style='width:250px;height:100%; background:#222222;right:0; position:absolute;' onClick="test();"></div>
     </body>
-
-    <script>
-    function onButtonUp() {
-      alert('123');
-    }
-
-      var renderer = PIXI.autoDetectRenderer(
-        window.innerWidth -250,
-        window.innerHeight -20,
-        {antialias:true, backgroundColor : 0x1099bb}
-      );
-
-      document.body.appendChild(renderer.view);
-
-      var stage = new PIXI.Container();
-
-/*
-      var texture = PIXI.Texture.fromImage('img/test.png');
-
-      var card = new PIXI.Sprite(texture);
-      card.interactive = true;
-
-
-      card.anchor.x = 0.1;
-      card.anchor.y = 0.5;
-
-      card.position.x = 200;
-      card.position.y = 150;
-
-      card.click = data => test(data);
-      console.log(card);
-      stage.addChild(card);
-*/
-
-      var card = new PIXI.Graphics();
-      card.interactive = true;
-      card.click = data => test(data);
-      card.beginFill(0x00FF00);
-
-      card.moveTo(0,0);
-      card.lineTo(0, 100);
-      card.lineTo(100, 100);
-      card.position.x = 0;
-      card.position.y = 0;
-
-      card.endFill();
-
-      //stage.addChild(card);
-
-
-      var t = new PIXI.Graphics();
-      t.interactive = true;
-      t.click = data => test(data);
-
-      t.position.x = 100;
-      t.position.y = 100;
-
-
-      t.beginFill(0xFFFFFF).lineStyle(2, 0x666633)
-        .drawRoundedRect(0, 0, 260, 140, 15)
-      .endFill();
-      x = 1 + 3 + 0 + 10;
-      y = 15;
-      t.beginFill(0xFFFFFF).lineStyle(2, 0x33CC66)
-        .moveTo(x + 35, y + 0)
-        .lineTo(x + 0, y + 55)
-        .lineTo(x + 35, y + 110)
-        .lineTo(x + 70, y + 55)
-      .endFill();
-
-      x = 6 + 70 + 20;
-      y = 15;
-      t.beginFill(0xFFFFFF).lineStyle(2, 0x33CC66)
-        .moveTo(x + 35, y + 0)
-        .lineTo(x + 0, y + 55)
-        .lineTo(x + 35, y + 110)
-        .lineTo(x + 70, y + 55)
-      .endFill();
-      t.moveTo(x + 0, y + 0)
-
-
-      x = 1 + 6 + 140 + 30;
-      y = 15;
-      t.beginFill(0x33CC66).lineStyle(2, 0x33CC66)
-        .moveTo(x + 35, y + 0)
-        .lineTo(x + 0, y + 55)
-        .lineTo(x + 35, y + 110)
-        .lineTo(x + 70, y + 55)
-      .endFill();
-
-
-
-
-      stage.addChild(t);
-
-      animate();
-      function animate() {
-        requestAnimationFrame(animate);
-
-        renderer.render(stage);
-      }
-
-      function test(data) {
-
-
-        data.target.position.x += 5;
-        data.target.position.y += 5;
-
-      }
-
-
-    </script>
 
 </html>
