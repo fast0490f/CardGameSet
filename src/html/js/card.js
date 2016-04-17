@@ -30,10 +30,9 @@ function figure(_figure, t, x, y) {
       break;
 
     case 3:
-      t.moveTo(x + 0, y + 50);
-      t.lineTo(x + 30, y + 0);
-      t.lineTo(x + 60, y + 50);
-      t.lineTo(x + 30, y + 100);
+    t.moveTo(x+0, y+0);
+    t.bezierCurveTo(x+40, y+10, x-0, y+100, x+60, y+100);
+    t.bezierCurveTo(x+60, y+100, x+180, y+100, x+20, y+30);
       break;
     default:
   }
