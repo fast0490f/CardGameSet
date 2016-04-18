@@ -1,6 +1,7 @@
 import { Server } from 'ws';
 import { newGame } from './game.js';
 import { getGame } from './game.js';
+import { checkGame } from './game.js';
 
 const PORT = 9000;
 const server = new Server({ port: PORT });
@@ -11,14 +12,19 @@ server.sendAll = data => {
 
 
 function clientConnection(client) {
-  newGame();
-  /* console.log(client); */
+  if (Object.keys(server.clients).length === 1) {
+    client.send(JSON.stringify(newGame()));
+  } else {
+    client.send(JSON.stringify(getGame()));
+  }
+}
+
+function checkSet(ob) {
+  console.log(checkGame(ob));
 }
 
 function clientSendMessage(client, mes) {
-  console.log('test');
-  if (mes.action === 'user') client.send(JSON.stringify(getGame()));
-  if (mes.action === 'newGame') client.send(JSON.stringify(newGame()));
+  if (mes.action === 'set') checkSet(mes.ob);
 }
 
 

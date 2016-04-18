@@ -19,12 +19,12 @@ function init() {
   animate();
 }
 
-
+console.log('');
 function test(data) {
   if (select.length === 2) {
     data.target.alpha = 0.7
     select.push(data.target.id);
-    console.log(select);
+    send({ action: 'set', ob: select });
     stage.children[select[0]].alpha = 1;
     stage.children[select[1]].alpha = 1;
     stage.children[select[2]].alpha = 1;
