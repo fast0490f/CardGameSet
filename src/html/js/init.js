@@ -1,7 +1,8 @@
 let select = [];
+let person;
 
 const renderer = PIXI.autoDetectRenderer(
-  document.documentElement.clientWidth,
+  document.documentElement.clientWidth - 250,
   document.documentElement.clientHeight,
   { antialias: true, backgroundColor: 0x1099bb }
 );
@@ -19,7 +20,7 @@ function init() {
   animate();
 }
 
-console.log('');
+
 function test(data) {
   if (data.target.alpha === 0.7){
     select.splice(select.indexOf(data.target.id), 1);
@@ -39,5 +40,40 @@ function test(data) {
       data.target.alpha = 0.7
     }
   }
+
+}
+
+
+function addli(users, b, count) {
+   document.getElementById('bar').innerHTML = '';
+  console.log(count);
+
+  for(var index in users) {
+    if (count[index]  == undefined){
+      count[index] = 0;
+    }
+    if (b[index]){
+      const x = document.createElement('LI');
+      x.className = "false";
+      var p = document.createElement("P");
+      const t = document.createTextNode(users[index] + ' ('+count[index]+')');
+      p.appendChild(t);
+      x.appendChild(p);
+      document.getElementById('bar').appendChild(x);
+    }else{
+      const x = document.createElement('LI');
+      x.className = "true";
+      var p = document.createElement("P");
+      var _p = document.createElement("P");
+      const t = document.createTextNode(users[index] + ' ('+ count[index] +')');
+      p.appendChild(t);
+      x.appendChild(p);
+      document.getElementById('bar').appendChild(x);
+    }
+
+  }
+
+
+
 
 }

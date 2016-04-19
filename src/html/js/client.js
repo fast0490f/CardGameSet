@@ -5,7 +5,8 @@ function send(data) {
 }
 
 server.onopen = () => {
-  send({ action: 'user', name: 'test' });
+  person = prompt("Please enter your name", "");
+  send({ action: 'user', name: person });
 };
 
 function message(mes) {
@@ -17,7 +18,12 @@ function message(mes) {
   }
 
     if (mes.action === 'ban') {
-      alert(mes.user);
+      //alert(mes.user);
+    }
+
+    if (mes.action === 'user') {
+      addli(mes.users, mes.ban , mes.count)
+
     }
 }
 
