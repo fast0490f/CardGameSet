@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
-import server from './server.js';
+require('./server/run.js');
 
 const app = express();
 
