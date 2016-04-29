@@ -4,7 +4,6 @@ const paint = [1, 3, 2];
 const quantity = [2, 3, 1];
 
 let game = [];
-let _game = [];
 let play = [];
 
 function setCard(f, c, p, q) {
@@ -20,23 +19,22 @@ function init() {
         p => quantity.forEach(
           q => setCard(f, c, p, q)
     ))));
-  _game = game;
   return game;
 }
 
 function rndCard() {
-  return 0 + Math.floor(Math.random() * (
-    (game.filter(value => value !== false).length - 1) + 1 - 0));
+  return 0 + Math.floor(Math.random() * ((game.length - 1) + 1 - 0));
 }
 
-function createCard(numberCard) {
-  game[numberCard] = false;
-  play.push(_game[numberCard]);
+function createCard() {
+  const rnd = rndCard();
+  play.push(game[rnd]);
+  game.splice(rnd, 1);
 }
 
 function addPlay(length) {
   for (let i = 1; i <= length; i++) {
-    createCard(rndCard());
+    createCard();
   }
   return play;
 }
@@ -44,4 +42,8 @@ function addPlay(length) {
 export function newGame() {
   init();
   return addPlay(12);
+}
+
+export function playGame() {
+  return play;
 }

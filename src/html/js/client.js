@@ -11,6 +11,7 @@ server.onopen = () => {
 
 function message(mes) {
   if (mes.action === 'game') {
+    console.log(mes);
     if (stage.children) stage.removeChildren(0, stage.children.length);
     mes.game.forEach((game, i) => {
       stage.addChild(setCard(i, game[0], game[1], game[2], game[3]));

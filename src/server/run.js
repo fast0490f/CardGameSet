@@ -18,6 +18,11 @@ server.sendAll = data => {
   server.clients.forEach(client => client.send(JSON.stringify(data)));
 };
 
+export function sendALL(data) {
+  server.sendAll(data);
+}
+
+
 if (server) {
   /* eslint no-console: 0 */
   console.warn('WS Server listening on port', PORT);
