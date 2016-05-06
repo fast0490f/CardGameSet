@@ -1,12 +1,12 @@
 import { Server } from 'ws';
-import { clientConnection } from './core.js';
-import { clientSendMessage } from './core.js';
+import { clientConnection, clientSendMessage } from './core.js';
 import { clientClose } from './core.js';
 import { checkJSON } from './core.js';
+import debugFoo from 'debug';
+const debug = debugFoo('cards');
 
 const PORT = 9000;
 export const server = new Server({ port: PORT });
-
 
 server.on('connection', client => {
   clientConnection(client);
@@ -22,8 +22,6 @@ export function sendALL(data) {
   server.sendAll(data);
 }
 
-
 if (server) {
-  /* eslint no-console: 0 */
-  console.warn('WS Server listening on port', PORT);
+  debug('WS Server listening on port', PORT);
 }

@@ -46,7 +46,6 @@ function getUsersCount() {
   return users.filter(ob => ob.active).length;
 }
 
-
 function _newGame(client) {
   send(client, 'game', newGame());
 }
@@ -55,7 +54,6 @@ function _playGame(client) {
   send(client, 'game', playGame());
   sendALL('users');
 }
-
 
 function checkGame(client) {
   if (getUsersCount() === 0) {
@@ -93,7 +91,7 @@ function checkblock(value) {
 }
 
 function gameSet(client, data) {
-  if (! users[client._ultron.id].block) {
+  if (!users[client._ultron.id].block) {
     if (checkSet(data.ob)) {
       users[client._ultron.id].score += 1;
       deleteCard(data.ob);
@@ -101,12 +99,11 @@ function gameSet(client, data) {
       sendALL('game');
     } else {
       users[client._ultron.id].block = true;
-      checkblock(getUsers().filter(ob => ! ob.block).length);
+      checkblock(getUsers().filter(ob => !ob.block).length);
     }
     sendALL('users');
   }
 }
-
 
 export function clientConnection(client) {
   checkGame(client);

@@ -1,7 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
+import debugFoo from 'debug';
+const debug = debugFoo('cards');
 require('./server/run.js');
+
 
 const app = express();
 
@@ -16,4 +19,4 @@ const port = process.env.PORT || 5000;
 
 app.listen(port);
 /* eslint no-console: 0 */
-console.warn('Http listening on port', port);
+debug('Http listening on port', port);
