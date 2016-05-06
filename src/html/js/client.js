@@ -14,6 +14,7 @@ function message(mes) {
     if (stage.children) stage.removeChildren(0, stage.children.length);
     mes.game.forEach((game, i) => {
       stage.addChild(setCard(i, game[0], game[1], game[2], game[3]));
+      document.getElementById('count').innerHTML = 'SET found: ' + mes.count;
     });
   }
 

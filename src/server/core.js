@@ -1,6 +1,8 @@
 import { newGame } from './game.js';
 import { playGame } from './game.js';
 import { checkSet } from './game.js';
+import { getSetCount } from './game.js';
+import { deleteCard } from './game.js';
 import { server } from './run.js';
 
 const users = [];
@@ -20,7 +22,7 @@ function getUsers() {
 function send(client, type, data) {
   switch (type) {
     case 'game':
-      client.send(JSON.stringify({ action: 'game', game: data, users: getUsers() }));
+      client.send(JSON.stringify({ action: 'game', game: data, count: getSetCount() }));
       break;
     default:
       console.log('!WTF!');
@@ -31,6 +33,9 @@ function sendALL(type) {
   switch (type) {
     case 'users':
       server.sendAll({ action: 'users', users: getUsers() });
+      break;
+    case 'game':
+      server.sendAll({ action: 'game', game: playGame(), count: getSetCount() });
       break;
     default:
       console.log('!WTF!');
@@ -91,7 +96,9 @@ function gameSet(client, data) {
   if (! users[client._ultron.id].block) {
     if (checkSet(data.ob)) {
       users[client._ultron.id].score += 1;
+      deleteCard(data.ob);
       checkblock(0);
+      sendALL('game');
     } else {
       users[client._ultron.id].block = true;
       checkblock(getUsers().filter(ob => ! ob.block).length);

@@ -12,6 +12,20 @@ function setCard(f, c, p, q) {
   game.push([f, c, p, q]);
 }
 
+export function checkSet(d) {
+  const t = [];
+  prop.forEach(p => {
+    t[p] =
+        play[d[0]][p] === play[d[1]][p] &&
+        play[d[0]][p] === play[d[2]][p] &&
+        play[d[1]][p] === play[d[2]][p] ||
+        play[d[0]][p] !== play[d[1]][p] &&
+        play[d[0]][p] !== play[d[2]][p] &&
+        play[d[1]][p] !== play[d[2]][p];
+  });
+  return t[0] && t[1] && t[2] && t[3];
+}
+
 function init() {
   game = [];
   play = [];
@@ -22,6 +36,22 @@ function init() {
           q => setCard(f, c, p, q)
     ))));
   return game;
+}
+
+export function getSetCount() {
+  let SetCount = 0;
+  play.forEach(
+    (aa, a) => play.forEach(
+      (bb, b) => play.forEach(
+        (cc, c) => {
+          if (a !== b && a !== c && b !== c) {
+            if (checkSet([a, b, c])) {
+              SetCount += 1;
+            }
+          }
+        }
+    )));
+  return SetCount / 2;
 }
 
 function rndCard() {
@@ -50,16 +80,9 @@ export function playGame() {
   return play;
 }
 
-export function checkSet(d) {
-  const t = [];
-  prop.forEach(p => {
-    t[p] =
-        play[d[0]][p] === play[d[1]][p] &&
-        play[d[0]][p] === play[d[2]][p] &&
-        play[d[1]][p] === play[d[2]][p] ||
-        play[d[0]][p] !== play[d[1]][p] &&
-        play[d[0]][p] !== play[d[2]][p] &&
-        play[d[1]][p] !== play[d[2]][p];
-  });
-  return t[0] && t[1] && t[2] && t[3];
+export function deleteCard(ob) {
+  play.splice(ob[0], 1);
+  play.splice(ob[1], 1);
+  play.splice(ob[2], 1);
+  addPlay(3);
 }
