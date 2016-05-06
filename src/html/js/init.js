@@ -22,7 +22,7 @@ function init() {
 
 
 function test(data) {
-  if (data.target.alpha === 0.7){
+  if (data.target.alpha === 0.7) {
     select.splice(select.indexOf(data.target.id), 1);
     data.target.alpha = 1;
   }else{
@@ -44,36 +44,28 @@ function test(data) {
 }
 
 
-function addli(users, b, count) {
-   document.getElementById('bar').innerHTML = '';
-  console.log(count);
+function addli(users) {
+  document.getElementById('bar').innerHTML = '';
 
-  for(var index in users) {
-    if (count[index]  == undefined){
-      count[index] = 0;
-    }
-    if (b[index]){
+
+  for (var i in users) {
+
+    if (users[i].block) {
       const x = document.createElement('LI');
-      x.className = "false";
+      x.className = 'false';
       var p = document.createElement("P");
-      const t = document.createTextNode(users[index] + ' ('+count[index]+')');
+      const t = document.createTextNode(users[i].name + ' (' + users[i].score + ')');
       p.appendChild(t);
       x.appendChild(p);
       document.getElementById('bar').appendChild(x);
     }else{
       const x = document.createElement('LI');
-      x.className = "true";
+      x.className = 'true';
       var p = document.createElement("P");
-      var _p = document.createElement("P");
-      const t = document.createTextNode(users[index] + ' ('+ count[index] +')');
+      const t = document.createTextNode(users[i].name + ' (' + users[i].score + ')');
       p.appendChild(t);
       x.appendChild(p);
       document.getElementById('bar').appendChild(x);
     }
-
   }
-
-
-
-
 }

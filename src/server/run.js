@@ -5,7 +5,7 @@ import { clientClose } from './core.js';
 import { checkJSON } from './core.js';
 
 const PORT = 9000;
-const server = new Server({ port: PORT });
+export const server = new Server({ port: PORT });
 
 
 server.on('connection', client => {
