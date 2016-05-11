@@ -18,7 +18,7 @@ app.set('json spaces', 2);
 app.use(express.static(`${__dirname}/html`));
 
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 80;
 
 _server.listen(port);
 /* eslint no-console: 0 */
