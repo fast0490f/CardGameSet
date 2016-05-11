@@ -3,10 +3,11 @@ import { clientConnection, clientSendMessage } from './core.js';
 import { clientClose } from './core.js';
 import { checkJSON } from './core.js';
 import debugFoo from 'debug';
+import { _server } from '../index';
+
+export const server = new Server({ server: _server });
 const debug = debugFoo('cards');
 
-const PORT = 5000;
-export const server = new Server({ port: PORT });
 
 server.on('connection', client => {
   clientConnection(client);
@@ -23,5 +24,5 @@ export function sendALL(data) {
 }
 
 if (server) {
-  debug('WS Server listening on port', PORT);
+  debug('WS Server listening on port');
 }

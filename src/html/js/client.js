@@ -1,4 +1,5 @@
-const server = new WebSocket(`ws://${window.document.location.host.replace(/:.*/, '')}:5000`);
+const host = location.origin.replace(/^http/, 'ws')
+const server = new WebSocket(host);
 
 function send(data) {
   server.send(JSON.stringify(data));
