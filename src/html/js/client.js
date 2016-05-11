@@ -1,5 +1,5 @@
 const host = location.origin.replace(/^http/, 'ws')
-const server = new WebSocket(host + ':80');
+const server = new WebSocket(host);
 
 function send(data) {
   server.send(JSON.stringify(data));
