@@ -5,7 +5,7 @@ import { checkJSON } from './core.js';
 import debugFoo from 'debug';
 const debug = debugFoo('cards');
 
-const PORT = 9000;
+const PORT = 5000;
 export const server = new Server({ port: PORT });
 
 server.on('connection', client => {

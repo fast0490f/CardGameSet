@@ -1,4 +1,4 @@
-const server = new WebSocket(`ws://${location.hostname}:9000`);
+const server = new WebSocket(`ws://${location.hostname}:5000`);
 
 function send(data) {
   server.send(JSON.stringify(data));
