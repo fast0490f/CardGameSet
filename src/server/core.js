@@ -118,6 +118,9 @@ export function clientSendMessage(client, data) {
       case 'set':
         gameSet(client, data);
         break;
+      case 'ping':
+        console.log('ping client #', client._ultron.id, ': ok');
+        break;
       default:
         console.log('WTF!');
     }

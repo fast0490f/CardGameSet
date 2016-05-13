@@ -1,13 +1,19 @@
 const host = location.origin.replace(/^http/, 'ws')
-const server = new WebSocket(host, null, { keepAlive: { enable: true, initialDelay: 30 } });
+const server = new WebSocket(host);
 
 function send(data) {
   server.send(JSON.stringify(data));
 }
 
+function ping() {
+  send({ action: 'ping', value: 'ok' });
+  setTimeout(ping, 30000);
+}
+
 server.onopen = () => {
   const person = this.prompt('Please enter your name', '');
   send({ action: 'user', name: person });
+  ping();
 };
 
 function clearSelect(mes) {
