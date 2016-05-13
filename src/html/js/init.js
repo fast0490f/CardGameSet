@@ -1,9 +1,17 @@
 let select = [];
 let person;
 
+if (document.documentElement.clientWidth > 1200){
+  y = document.documentElement.clientWidth;
+  x = document.documentElement.clientHeight;
+} else {
+  y = document.documentElement.clientWidth;
+  x = 660;
+}
+
 const renderer = PIXI.autoDetectRenderer(
-  document.documentElement.clientWidth - 250,
-  document.documentElement.clientHeight,
+  y,
+  x,
   { antialias: true, backgroundColor: 0x1099bb }
 );
 
@@ -11,6 +19,7 @@ const stage = new PIXI.Container();
 
 
 function init() {
+  if (x === 660)  document.getElementById('panel').className = 'panel';
   document.body.appendChild(renderer.view);
 
   function animate() {

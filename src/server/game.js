@@ -81,8 +81,9 @@ export function playGame() {
 }
 
 export function deleteCard(ob) {
-  play.splice(ob[0], 1);
-  play.splice(ob[1], 1);
-  play.splice(ob[2], 1);
+  play[ob[0]] = false;
+  play[ob[1]] = false;
+  play[ob[2]] = false;
+  play = play.filter(value => value !== false);
   addPlay(3);
 }

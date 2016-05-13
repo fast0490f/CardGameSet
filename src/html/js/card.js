@@ -67,7 +67,8 @@ function setCard(point, _figure, _color, _paint, _quantity) {
   const t = new PIXI.Graphics();
   t.interactive = true;
   t.id = point;
-  t.click = data => test(data);
+  t.on('mousedown', test);
+  t.on('touchstart', test);
 
   t.beginFill(0xFFFFFF).lineStyle(2, 0x666633)
     .drawRoundedRect(0, 0, 260, 140, 15)
