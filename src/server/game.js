@@ -51,7 +51,7 @@ export function getSetCount() {
           }
         }
     )));
-  return SetCount / 2;
+  return SetCount / 6;
 }
 
 function rndCard() {
