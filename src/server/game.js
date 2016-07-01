@@ -68,8 +68,18 @@ function addPlay(length) {
   for (let i = 1; i <= length; i++) {
     createCard();
   }
+  if (getSetCount() === 0) {
+    createCard();
+    if (getSetCount() === 0) {
+      createCard();
+      if (getSetCount() === 0) {
+        createCard();
+      }
+    }
+  }
   return play;
 }
+
 
 export function newGame() {
   init();
